@@ -13,10 +13,10 @@ Counts are the desk's, from its export of 2026-10-04: 427 rows, 412 unique repor
 ## The kb page
 
 - Source: [`support-kb/src/routes/kb/incidents/4471-problems/+page.svx`](support-kb/src/routes/kb/incidents/4471-problems/+page.svx), signed `frimoldi` (desk ref `DR-TTMW-EEVQ`).
-- Its numbers come from [`ProblemTable.svelte`](support-kb/src/lib/kb/ProblemTable.svelte) and [`problems.ts`](support-kb/src/lib/kb/problems.ts), computed from the data at render time.
+- Its numbers come from the desk's own `CauseTable` component, computed from the desk's data at render time. The page adds words and the ticket links, no new logic.
 - As the desk sees it: [`rendered/4471-problems.html`](rendered/4471-problems.html) and [`rendered/4471-problems.png`](rendered/4471-problems.png).
 
-`support-kb/` is the desk's kb export with the page and its component added, plus what it takes to render it (`package.json`, `vite.config.js`, `src/app.html`, `src/routes/+layout.js`).
+`support-kb/` is the desk's kb export with the page added, plus what it takes to render it (`package.json`, `vite.config.js`, `src/app.html`, `src/routes/+layout.js`).
 
 ## Render it
 

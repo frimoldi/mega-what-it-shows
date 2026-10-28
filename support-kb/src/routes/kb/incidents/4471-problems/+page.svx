@@ -8,7 +8,7 @@ signature: frimoldi
 ---
 
 <script>
-  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
@@ -17,16 +17,22 @@ The [#4471 page](/kb/incidents/4471) says one issue, one fix queued. Its own tab
 otherwise once it renders: the reports merged into it do not share one cause. This page splits
 them and gives each problem a ticket of its own.
 
-## The problems
+## What #4471 holds
 
-<ProblemTable
-  ticket={4471}
-  issues={{
-    parser: 'https://github.com/frimoldi/mega-what-it-shows/issues/1',
-    hint: 'https://github.com/frimoldi/mega-what-it-shows/issues/2',
-    'one-day-move': 'https://github.com/frimoldi/mega-what-it-shows/issues/3',
-  }}
-/>
+The desk's own view of #4471, built from its data at render time:
+
+<CauseTable ticket={4471} />
+
+## The tickets
+
+One ticket per problem in #4471:
+
+- `parser`, the shared parser reads a day-first date month first:
+  [frimoldi/mega-what-it-shows#1](https://github.com/frimoldi/mega-what-it-shows/issues/1)
+- `hint`, the booking-v3 form hints `MM/DD/YYYY`, then reads the date day first:
+  [frimoldi/mega-what-it-shows#2](https://github.com/frimoldi/mega-what-it-shows/issues/2)
+- one-day move, the date moves by one day across time zones:
+  [frimoldi/mega-what-it-shows#3](https://github.com/frimoldi/mega-what-it-shows/issues/3)
 
 ## How a report is placed
 
