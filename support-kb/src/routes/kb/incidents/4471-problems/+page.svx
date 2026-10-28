@@ -1,0 +1,67 @@
+---
+layout: runbook
+title: '#4471 · the problems inside it'
+owner: frimoldi
+status: open
+reviewed: 2026-10-28
+signature: frimoldi
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+The [#4471 page](/kb/incidents/4471) says one issue, one fix queued. Its own table says
+otherwise once it renders: the reports merged into it do not share one cause. This page splits
+them and gives each problem a ticket of its own.
+
+## The problems
+
+<ProblemTable
+  ticket={4471}
+  issues={{
+    parser: 'https://github.com/frimoldi/mega-what-it-shows/issues/1',
+    hint: 'https://github.com/frimoldi/mega-what-it-shows/issues/2',
+    'one-day-move': 'https://github.com/frimoldi/mega-what-it-shows/issues/3',
+  }}
+/>
+
+## How a report is placed
+
+- **parser**: the tenant writes the day first, and the report did not come through the
+  booking-v3 form. The shared parser reads the date month first, so day and month swap. The
+  queued fix for #4471 is this one.
+- **hint**: the tenant runs booking-v3 and the report came through its form. The form prints
+  `MM/DD/YYYY` under the date field, people type month first as it tells them, and the form
+  reads the date the tenant's way, day first. The parser fix does not touch this: the hint has
+  to follow the tenant's locale.
+- **one-day-move**: the desk read these as a one-day move (`desk-notes.json`). The date lands
+  a day off, or two people in different time zones see different days. Day and month do not
+  swap. This is a time-zone bug with its own fix.
+
+The cause comes from the tenant (`locales.ts`), not from the intake tag. Intake guesses from
+the reporter's browser, and on #4471 it is wrong in both directions: see the "tagged as"
+column on the [#4471 page](/kb/incidents/4471).
+
+## Why they were merged
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on the subject line alone. The
+subjects in #4471, such as "Date is wrong" and "Wrong day on the invite", fit every one of
+these problems, so they all landed in one ticket. The [triage page](/kb/triage/dedupe) that applies
+the rule is marked stale.
+
+<Callout kind="warn">
+#4471 is marked known, with one fix queued. That fix covers the parser problem only. The hint
+and one-day-move problems stay open until their own tickets close.
+</Callout>
+
+## What the desk does now
+
+- Keep #4471 for the parser problem: the queued fix covers it.
+- Send new reports from the booking-v3 form to the hint ticket, and one-day moves to the
+  one-day-move ticket.
+- Count each report once, by id: the export repeats some.
+
+<RenderStamp {signature} />
