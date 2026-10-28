@@ -3,7 +3,7 @@
   import notes from '#lib/data/desk-notes.json';
   import type { Report } from '#lib/kb/causes';
   import { tenantOf } from '#lib/kb/locales';
-  import { problemsIn, type Problem } from '#lib/kb/problems';
+  import { mergedInto, problemsIn, type Problem } from '#lib/kb/problems';
 
   // `issues`: the ticket filed for each problem, by problem.
   let { ticket, issues = {} }: { ticket: number; issues?: Partial<Record<Problem, string>> } = $props();
@@ -16,7 +16,7 @@
   };
 
   const groups = $derived(problemsIn(reports as Report[], ticket, tenantOf, notes.oneDayMove));
-  const total = $derived(groups.reduce((n, g) => n + g.reports.length, 0));
+  const total = $derived(mergedInto(reports as Report[], ticket).length);
   const ticketNo = (url: string) => url.match(/\/issues\/(\d+)/)?.[1];
 </script>
 
@@ -50,7 +50,14 @@
   </tbody>
 </table>
 
+{#each groups as g (g.problem)}
+  {#if g.oneDayMoves}
+    <p class="note">{g.oneDayMoves} of the <code>{g.problem}</code> reports are the one-day moves: the desk files them under <code>{g.problem}</code> by tenant and counts them there.</p>
+  {/if}
+{/each}
+
 <style>
   .sum { font-size: 1.1rem; }
+  .note { color: var(--muted); font-size: 0.85em; }
   .open td:last-child { color: var(--warn); font-weight: 600; }
 </style>

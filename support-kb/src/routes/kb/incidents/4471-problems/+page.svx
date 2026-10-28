@@ -39,7 +39,8 @@ them and gives each problem a ticket of its own.
   to follow the tenant's locale.
 - **one-day-move**: the desk read these as a one-day move (`desk-notes.json`). The date lands
   a day off, or two people in different time zones see different days. Day and month do not
-  swap. This is a time-zone bug with its own fix.
+  swap. This is a time-zone bug with its own fix. The desk files these by tenant, so they stay
+  counted under parser too.
 
 The cause comes from the tenant (`locales.ts`), not from the intake tag. Intake guesses from
 the reporter's browser, and on #4471 it is wrong in both directions: see the "tagged as"
