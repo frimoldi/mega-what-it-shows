@@ -33,7 +33,7 @@ tickets closed on 29 October 2026:
 - `hint`, the booking-v3 form hints `MM/DD/YYYY`, then reads the date day first:
   [frimoldi/mega-what-it-shows#2](https://github.com/frimoldi/mega-what-it-shows/issues/2), closed
 - one-day move, the date moves by one day across time zones:
-  [frimoldi/mega-what-it-shows#4](https://github.com/frimoldi/mega-what-it-shows/issues/4), closed
+  [frimoldi/mega-what-it-shows#6](https://github.com/frimoldi/mega-what-it-shows/issues/6), closed
 
 ## How a report is placed
 

@@ -8,14 +8,14 @@ The desk merged 412 reports about dates into ticket `#4471` and marked it known.
 |---|---|---|
 | [#5](../../issues/5) | The shared parser reads day-first dates month first | 379 |
 | [#2](../../issues/2) | The booking-v3 form hints `MM/DD/YYYY` to day-first tenants | 33 |
-| [#4](../../issues/4) | Dates move by one day across time zones | 5 |
+| [#6](../../issues/6) | Dates move by one day across time zones | 5 |
 
 Counts are the desk's, from its export of 2026-10-04, as its cause table shows them: 412 reports, one per id. The desk files a report by tenant and counts it there, so the 5 one-day moves are counted under parser too and footnoted.
 
 ## The page
 
 - Source: [`support-kb/src/routes/kb/incidents/4471-problems/+page.svx`](support-kb/src/routes/kb/incidents/4471-problems/+page.svx). Its numbers come from the desk's own `CauseTable`, computed from the desk's data at render time.
-- As the desk sees it: [`rendered/4471-problems.html`](rendered/4471-problems.html) and [`rendered/4471-problems.png`](rendered/4471-problems.png).
+- As the desk sees it, built by the kb: [`support-kb/build/kb/incidents/4471-problems/index.html`](support-kb/build/kb/incidents/4471-problems/index.html) (the whole build is in `support-kb/build/`). A standalone copy and a screenshot: [`rendered/4471-problems.html`](rendered/4471-problems.html), [`rendered/4471-problems.png`](rendered/4471-problems.png).
 
 ## Render it
 
