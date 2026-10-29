@@ -4,11 +4,11 @@ The support desk merged 412 reports about dates into one ticket, `#4471`, and ma
 
 | Issue | Problem | Reports |
 |---|---|---|
-| [#1](../../issues/1) | The shared parser reads day-first dates month first | 379 |
+| [#1](../../issues/1) | The shared parser reads day-first dates month first | 374 |
 | [#2](../../issues/2) | The booking-v3 form hints `MM/DD/YYYY` to day-first tenants | 33 |
 | [#3](../../issues/3) | Dates move by one day across time zones | 5 |
 
-Counts are the desk's, from its export of 2026-10-04: 427 rows, 412 unique reports by id. The desk files a report by tenant and counts it there, so the 5 one-day moves are counted under parser too.
+Counts are the desk's, from its export of 2026-10-04: 427 rows, 412 unique reports by id. The desk's cause table files a report by tenant, so it shows the 5 one-day moves under parser too (379); #1 leaves them to #3, so the three issues add up to the 412.
 
 ## The kb page
 
