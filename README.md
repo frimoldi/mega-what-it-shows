@@ -1,14 +1,13 @@
 # What #4471 holds
 
-The support desk merged 412 reports about dates into one ticket, `#4471`, and marked it known: one issue, one fix queued. The desk's own kb renders a different picture. The reports hold three problems, each filed here as an issue:
+The support desk merged 412 reports about dates into one ticket, `#4471`, and marked it known: one issue, one fix queued. The desk's own kb renders a different picture: its cause table for #4471 shows two causes. Each has an issue here:
 
 | Issue | Problem | Reports |
 |---|---|---|
 | [#1](../../issues/1) | The shared parser reads day-first dates month first | 379 |
 | [#2](../../issues/2) | The booking-v3 form hints `MM/DD/YYYY` to day-first tenants | 33 |
-| [#3](../../issues/3) | Dates move by one day across time zones | 5 |
 
-Counts are the desk's, from its export of 2026-10-04: 427 rows, 412 unique reports by id. The desk files a report by tenant and counts it there, so the 5 one-day moves are counted under parser too.
+379 + 33 = 412: every report in #4471, counted once, the desk's way. Counts are from the desk's export of 2026-10-04: 427 rows, 412 unique reports by id. The cause comes from the tenant. The desk read 5 of the parser reports as a one-day move (`desk-notes.json`); it files and counts them under parser and footnotes them, so #1 includes and names them.
 
 ## The kb page
 
