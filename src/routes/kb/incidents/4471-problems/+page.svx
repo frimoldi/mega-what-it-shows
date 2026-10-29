@@ -15,7 +15,7 @@ signature: frimoldi
 
 The [#4471 page](/kb/incidents/4471) says one issue, one fix queued. Its own table says
 otherwise once it renders: the reports merged into it do not share one cause. This page splits
-them by cause and gives each cause a ticket of its own.
+them and gives each problem a ticket of its own.
 
 ## What #4471 holds
 
@@ -25,12 +25,14 @@ The desk's own view of #4471, built from its data at render time:
 
 ## The tickets
 
-One ticket per cause in #4471, counted as the table above counts them:
+One ticket per problem in #4471:
 
 - `parser`, the shared parser reads a day-first date month first:
-  [frimoldi/mega-what-it-shows#1](https://github.com/frimoldi/mega-what-it-shows/issues/1)
+  [frimoldi/mega-what-it-shows#5](https://github.com/frimoldi/mega-what-it-shows/issues/5)
 - `hint`, the booking-v3 form hints `MM/DD/YYYY`, then reads the date day first:
   [frimoldi/mega-what-it-shows#2](https://github.com/frimoldi/mega-what-it-shows/issues/2)
+- one-day move, the date moves by one day across time zones:
+  [frimoldi/mega-what-it-shows#4](https://github.com/frimoldi/mega-what-it-shows/issues/4)
 
 ## How a report is placed
 
@@ -41,11 +43,10 @@ One ticket per cause in #4471, counted as the table above counts them:
   `MM/DD/YYYY` under the date field, people type month first as it tells them, and the form
   reads the date the tenant's way, day first. The parser fix does not touch this: the hint has
   to follow the tenant's locale.
-
-The footnote under the table: the desk read a few `parser` reports as a one-day move
-(`desk-notes.json`). It files and counts them under `parser` by tenant, so they are in #1, which
-names them. Their bodies describe a date one day off rather than a day/month swap: check them
-again when the parser fix ships.
+- **one-day-move**: the desk read these as a one-day move (`desk-notes.json`). The date lands
+  a day off, or two people in different time zones see different days. Day and month do not
+  swap. This is a time-zone bug with its own fix. The desk files these by tenant, so they stay
+  counted under parser too.
 
 The cause comes from the tenant (`locales.ts`), not from the intake tag. Intake guesses from
 the reporter's browser, and on #4471 it is wrong in both directions: see the "tagged as"
@@ -60,13 +61,14 @@ the rule is marked stale.
 
 <Callout kind="warn">
 #4471 is marked known, with one fix queued. That fix covers the parser problem only. The hint
-problem stays open until its own ticket closes.
+and one-day-move problems stay open until their own tickets close.
 </Callout>
 
 ## What the desk does now
 
 - Keep #4471 for the parser problem: the queued fix covers it.
-- Send new reports from the booking-v3 form to the hint ticket.
+- Send new reports from the booking-v3 form to the hint ticket, and one-day moves to the
+  one-day-move ticket.
 - Count each report once, by id: the export repeats some.
 
 <RenderStamp {signature} />
