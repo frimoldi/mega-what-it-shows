@@ -1,6 +1,6 @@
 # What #4471 holds
 
-This repo holds the support desk's kb export in `support-kb/`, as exported, with one page added: [`support-kb/src/routes/kb/incidents/4471-problems/+page.svx`](support-kb/src/routes/kb/incidents/4471-problems/+page.svx), signed `frimoldi` (desk ref `DR-TTMW-EEVQ`).
+This repo holds the support desk's kb export in `support-kb/`, as exported, with one page added: [`support-kb/src/routes/kb/incidents/4471-problems/+page.svx`](support-kb/src/routes/kb/incidents/4471-problems/+page.svx), signed with the course's signature ticket (desk ref `DR-3HC9-T3N2`).
 
 The desk merged 412 reports about dates into ticket `#4471` and marked it known. The desk's own cause table for #4471 shows more than one problem. Each has an issue here:
 
