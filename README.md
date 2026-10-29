@@ -1,36 +1,28 @@
-# kb — the support knowledge base
+# What #4471 holds
 
-**kb** = knowledge base. What the support desk knows about how our products break, written
-down where the code can keep it honest.
+This repo holds the support desk's kb export in `support-kb/`, as exported, with one page added: [`support-kb/src/routes/kb/incidents/4471-problems/+page.svx`](support-kb/src/routes/kb/incidents/4471-problems/+page.svx), signed `frimoldi` (desk ref `DR-TTMW-EEVQ`).
 
-One desk takes reports for every product we run: `sched-prod` (calendar invites for about
-300k people) and the rest. When something
-goes wrong, the reports reach the desk first. This kb is how the desk triages them, what each
-incident turned out to be, and why we decided what we decided.
+The desk merged 412 reports about dates into ticket `#4471` and marked it known. The desk's own cause table for #4471 shows more than one problem. Each has an issue here:
 
-## What's here
+| Issue | Problem | Reports |
+|---|---|---|
+| [#5](../../issues/5) | The shared parser reads day-first dates month first | 379 |
+| [#2](../../issues/2) | The booking-v3 form hints `MM/DD/YYYY` to day-first tenants | 33 |
+| [#4](../../issues/4) | Dates move by one day across time zones | 5 |
 
+Counts are the desk's, from its export of 2026-10-04, as its cause table shows them: 412 reports, one per id. The desk files a report by tenant and counts it there, so the 5 one-day moves are counted under parser too and footnoted.
+
+## The page
+
+- Source: [`support-kb/src/routes/kb/incidents/4471-problems/+page.svx`](support-kb/src/routes/kb/incidents/4471-problems/+page.svx). Its numbers come from the desk's own `CauseTable`, computed from the desk's data at render time.
+- As the desk sees it: [`rendered/4471-problems.html`](rendered/4471-problems.html) and [`rendered/4471-problems.png`](rendered/4471-problems.png).
+
+## Render it
+
+```sh
+cd support-kb
+npm install
+npx vite build   # pages land in build/kb/
 ```
-src/routes/kb/      the pages (.svx: Markdown with components)
-  triage/           how the desk handles incoming reports
-  incidents/        one page per big ticket
-  decisions/        numbered decision records
-src/lib/kb/         components and the logic they run
-src/lib/layouts/    the frame every page shares
-src/lib/data/       exports from the ticket system
-```
 
-## Conventions
-
-- Words in the page, logic in `src/lib` (imported as `#lib/…`). A number that can be computed belongs in a component.
-- Every page starts with frontmatter: `title`, `owner`, `status`, `reviewed`.
-- A decision is never edited after it is accepted. A new record replaces it.
-- A page you add is signed: its frontmatter carries your `signature` and it ends with `<RenderStamp {signature} />`, so the desk knows who wrote it.
-
-## Owners
-
-Support desk. Decision records: whoever signed them.
-
----
-
-Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
+Added to the export to render it: `package.json`, `vite.config.js`, `src/app.html`, `src/routes/+layout.js`. Built with SvelteKit 3.1, Svelte 5.57, mdsvex 0.12 and adapter-static.
