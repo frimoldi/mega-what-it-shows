@@ -2,8 +2,8 @@
 layout: runbook
 title: '#4471 · the problems inside it'
 owner: frimoldi
-status: open
-reviewed: 2026-10-28
+status: closed
+reviewed: 2026-10-29
 signature: frimoldi
 ---
 
@@ -25,14 +25,15 @@ The desk's own view of #4471, built from its data at render time:
 
 ## The tickets
 
-One ticket per problem in #4471:
+One ticket per problem in #4471. The desk finished its work on #4471, and all three
+tickets closed on 29 October 2026:
 
 - `parser`, the shared parser reads a day-first date month first:
-  [frimoldi/mega-what-it-shows#5](https://github.com/frimoldi/mega-what-it-shows/issues/5)
+  [frimoldi/mega-what-it-shows#5](https://github.com/frimoldi/mega-what-it-shows/issues/5), closed
 - `hint`, the booking-v3 form hints `MM/DD/YYYY`, then reads the date day first:
-  [frimoldi/mega-what-it-shows#2](https://github.com/frimoldi/mega-what-it-shows/issues/2)
+  [frimoldi/mega-what-it-shows#2](https://github.com/frimoldi/mega-what-it-shows/issues/2), closed
 - one-day move, the date moves by one day across time zones:
-  [frimoldi/mega-what-it-shows#4](https://github.com/frimoldi/mega-what-it-shows/issues/4)
+  [frimoldi/mega-what-it-shows#4](https://github.com/frimoldi/mega-what-it-shows/issues/4), closed
 
 ## How a report is placed
 
@@ -60,14 +61,15 @@ these problems, so they all landed in one ticket. The [triage page](/kb/triage/d
 the rule is marked stale.
 
 <Callout kind="warn">
-#4471 is marked known, with one fix queued. That fix covers the parser problem only. The hint
-and one-day-move problems stay open until their own tickets close.
+#4471 was marked known, with one fix queued for the parser problem. The hint and one-day-move
+problems had no ticket of their own. All three tickets are closed now. The counts above come
+from the desk's data at render time, so they follow the desk, not this page.
 </Callout>
 
 ## What the desk does now
 
 - Keep #4471 for the parser problem: the queued fix covers it.
-- Send new reports from the booking-v3 form to the hint ticket, and one-day moves to the
+- A new report from the booking-v3 form reopens the hint ticket; a new one-day move reopens the
   one-day-move ticket.
 - Count each report once, by id: the export repeats some.
 
